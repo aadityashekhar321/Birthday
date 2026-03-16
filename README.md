@@ -5,12 +5,22 @@
 ![Header](https://img.shields.io/badge/Status-Legendary-gold?style=for-the-badge)
 ![Tech Stack](https://img.shields.io/badge/Tech%20Stack-HTML%20%7C%20Tailwind%20%7C%20JS-blueviolet?style=for-the-badge)
 ![Visual Style](https://img.shields.io/badge/Style-Vintage%20Cinematic-orange?style=for-the-badge)
+![Mobile Friendly](https://img.shields.io/badge/Mobile-Optimized-success?style=for-the-badge)
 
 **A high-fidelity, interactive experience designed to celebrate a legendary journey with style, humor, and heart.**
 
-[Explore the Code](file:///c:/Users/HP/Downloads/Birthday/code.html) • [Jump to Features](#-the-experience) • [Technical Setup](#-getting-started)
+[Explore the Code](file:///c:/Users/HP/Downloads/Birthday/index.html) • [Jump to Features](#-the-experience) • [Technical Setup](#-getting-started)
 
 </div>
+
+---
+
+## 📌 Table of Contents
+- [🎞️ Creative Showcase](#️-the-creative-showcase)
+- [🎬 The Experience](#-the-experience)
+- [🎨 Design & Technicals](#-technical-deep-dive)
+- [⚙️ Customization Guide](#️-customization-guide)
+- [🚀 Getting Started](#-getting-started)
 
 ---
 
@@ -32,7 +42,19 @@ A curated gallery capturing the energy, color, and chaos of this legendary celeb
 
 ## 🎬 The Experience
 
-The site is designed to feel like a vintage film premiere. From the moment it loads, you are greeted with a cinematic curtain reveal, leading into a world of interactive storytelling.
+The site is designed to feel like a vintage film premiere.
+
+### 🎭 User Journey Flow
+```mermaid
+graph TD
+    A[Curtain Reveal] --> B[Hero Celebration]
+    B --> C[Story Timeline]
+    C --> D[Data Statistics]
+    D --> E[Memory Reel]
+    E --> F[Achievements Unlocked]
+    F --> G[The Secret Roast]
+    G --> H[The Final Wish]
+```
 
 ### ✨ Key Features at a Glance
 
@@ -47,41 +69,47 @@ The site is designed to feel like a vintage film premiere. From the moment it lo
 
 ---
 
+## ⚙️ Customization Guide
+
+Want to change the messages or images? It's all in `index.html`.
+
+### 🖍️ Visuals & Data
+- **Colors:** Find the `tailwind.config` section (lines 13-28) to change the `amber`, `rose`, or `gold` hex codes.
+- **Messages:** Search for the quote text or the journal message to edit the birthday wishes.
+- **Stats:** Locate the `counter` elements (lines 450-469) to update the "Days of Brilliance" or birthday date.
+
+### 🖼️ Images
+Simply replace the `src` URLs in the following sections:
+- **Polaroids:** Find the `Memory Reel` section (lines 471-509).
+- **Gallery Images:** Replace `image1.png` to `image8.png` in the local folder.
+
+---
+
 ## 🛠️ Technical Deep Dive
 
-This project packs complex logic and high-end styling into a single portable document.
-
-### 🎨 Design System
-- **Vintage Grained Overlay**: An animated film grain texture for a consistent, "analog" feel.
-- **Glassmorphism UI**: High-end `backdrop-filter: blur()` effects with semi-transparent borders.
-- **Dynamic Palette**: Warm **Amber**, **Rose**, and **Gold** gradients.
-
-### 🧠 Core Mechanics
-- **Canvas Particle System**: Custom JS engine managing physics-based `Particle` objects in real-time.
-- **Intersection Observer API**: Sections reveal gracefully as you scroll, optimizing performance.
-- **State Management**: Fluid transformations and card cycling handled via Vanilla JS.
+- **Vintage Style:** Animated film grain texture overlay.
+- **Modern Foundation:** Built with Tailwind CSS and Vanilla JavaScript.
+- **Performance:** Optimized with Intersection Observer API for smooth scrolling.
 
 ---
 
 ## 🚀 Getting Started
 
 ### 1. Local View
-1. Ensure `code.html` and your image assets are in the same folder.
-2. Double-click `code.html` to launch in your browser.
+1. Ensure `index.html` and your image assets are in the same folder.
+2. Double-click `index.html` to launch.
 
 ### 2. Live Hosting (GitHub Pages)
-Make this site live for others to see:
 1. Go to your repository settings on GitHub.
-2. Navigate to the **Pages** section.
-3. Select the **main** branch and click **Save**.
-4. Your site will be live at `https://your-username.github.io/Birthday/code.html`!
+2. Navigate to **Pages**.
+3. Select **main** branch and click **Save**.
+4. Site will be live at `https://aadityashekhar321.github.io/Birthday/`!
 
 ---
 
-## 📝 Credits & Inspiration
-
-Crafted with meticulous attention to detail to celebrate **Aniket**.
-- **Me & Raj**: For the heartfelt messages and roast contributions.
+## 📝 Credits
+Crafted to celebrate **Aniket**.
+- **Me & Raj**: For the heartfelt messages.
 - **The Developers**: For bridging the gap between code and celebration.
 
 ---
