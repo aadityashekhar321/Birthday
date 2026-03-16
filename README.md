@@ -4,7 +4,7 @@
 [![Visual Style](https://img.shields.io/badge/Style-Vintage%20Cinematic-orange)](file:///c:/Users/HP/Downloads/Birthday/code.html)
 [![Interactivity](https://img.shields.io/badge/Interactivity-High-gold)](file:///c:/Users/HP/Downloads/Birthday/code.html)
 
-Welcome to the digital tribute for **Aniket**. This isn't just a webpage; it's a high-fidelity, interactive experience designed to celebrate a legendary journey with style, humor, and heart.
+Welcome to the digital celebration for **Aniket**. This isn't just a webpage; it's a high-fidelity, interactive experience designed to celebrate a legendary journey with style, humor, and heart.
 
 ---
 
