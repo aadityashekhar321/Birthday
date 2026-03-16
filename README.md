@@ -3,13 +3,15 @@
 <div align="center">
 
 ![Header](https://img.shields.io/badge/Status-Legendary-gold?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![Tech Stack](https://img.shields.io/badge/Tech%20Stack-HTML%20%7C%20Tailwind%20%7C%20JS-blueviolet?style=for-the-badge)
 ![Visual Style](https://img.shields.io/badge/Style-Vintage%20Cinematic-orange?style=for-the-badge)
-![Mobile Friendly](https://img.shields.io/badge/Mobile-Optimized-success?style=for-the-badge)
 
 **A high-fidelity, interactive experience designed to celebrate a legendary journey with style, humor, and heart.**
 
-[Explore the Code](file:///c:/Users/HP/Downloads/Birthday/index.html) • [Jump to Features](#-the-experience) • [Technical Setup](#-getting-started)
+[🚀 View Live Demo](https://aadityashekhar321.github.io/Birthday/)
+
+[Explore the Code](#️-getting-started) • [Jump to Features](#-the-experience) • [Customization](#️-customization-guide)
 
 </div>
 
@@ -69,27 +71,35 @@ graph TD
 
 ---
 
-## ⚙️ Customization Guide
+<details>
+<summary><b>🛠️ Click to Expand: Technical Deep Dive</b></summary>
 
-Want to change the messages or images? It's all in `index.html`.
+### 🎨 Design System
+- **Vintage Grained Overlay**: An animated film grain texture for a consistent, "analog" feel.
+- **Glassmorphism UI**: High-end `backdrop-filter: blur()` effects with semi-transparent borders.
+- **Dynamic Palette**: Warm **Amber**, **Rose**, and **Gold** gradients.
+
+### 🧠 Core Mechanics
+- **Canvas Particle System**: Custom JS engine managing physics-based `Particle` objects in real-time.
+- **Intersection Observer API**: Sections reveal gracefully as you scroll, optimizing performance.
+- **State Management**: Fluid transformations and card cycling handled via Vanilla JS.
+
+</details>
+
+<details>
+<summary><b>⚙️ Click to Expand: Customization Guide</b></summary>
 
 ### 🖍️ Visuals & Data
-- **Colors:** Find the `tailwind.config` section (lines 13-28) to change the `amber`, `rose`, or `gold` hex codes.
-- **Messages:** Search for the quote text or the journal message to edit the birthday wishes.
-- **Stats:** Locate the `counter` elements (lines 450-469) to update the "Days of Brilliance" or birthday date.
+- **Colors:** Find the `tailwind.config` section in `index.html` to change hex codes.
+- **Messages:** Search for the quote text or journal message to edit the wishes.
+- **Stats:** Locate the `counter` elements to update counts or the birthday date.
 
 ### 🖼️ Images
 Simply replace the `src` URLs in the following sections:
-- **Polaroids:** Find the `Memory Reel` section (lines 471-509).
+- **Polaroids:** Find the `Memory Reel` section.
 - **Gallery Images:** Replace `image1.png` to `image8.png` in the local folder.
 
----
-
-## 🛠️ Technical Deep Dive
-
-- **Vintage Style:** Animated film grain texture overlay.
-- **Modern Foundation:** Built with Tailwind CSS and Vanilla JavaScript.
-- **Performance:** Optimized with Intersection Observer API for smooth scrolling.
+</details>
 
 ---
 
@@ -108,11 +118,15 @@ Simply replace the `src` URLs in the following sections:
 ---
 
 ## 📝 Credits
-Crafted to celebrate **Aniket**.
+Crafted with meticulous attention to detail for **Aniket**.
 - **Me & Raj**: For the heartfelt messages.
 - **The Developers**: For bridging the gap between code and celebration.
 
 ---
+
 <div align="center">
+
+### Give it a ⭐ if you liked it!
+
 *May your code always compile and your birthday always be legendary!* 🚀
 </div>
