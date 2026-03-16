@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aniket's Birthday Celebration</title>
+<!-- BEGIN: Fonts and Tailwind -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&amp;family=Josefin+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#0a0a0a',
+            amber: '#ffbf00',
+            rose: '#e11d48',
+            gold: '#d4af37',
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Josefin Sans', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+<!-- END: Fonts and Tailwind -->
+<!-- BEGIN: Global Styles -->
+<style data-purpose="base-styles">body {
+    background-color: #050505;
+    color: #e5a1a1;
+    overflow-x: hidden;
+    cursor: none
+    }
+/* Film Grain Overlay */
+.film-grain::after {
+    content: "";
+    position: fixed;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCDFRaVwLD9biTFN_zCoMU2rVVljYwp9yP8YHMMosHeW5FEvQNr7v5NFXyW29yzP3CZr7f6cyOkNlVK8nBuamFMzhBbklTkMM_fRvH8umGUmea-X5ZA3zJDtXtPMaoG2Xp73R54XZrioAfovzY_DE3GfXynz22KwTEmZ0g88LKMjUHgsJl-YGm27NN1MSTILI6q7LABhq-bxjQmcbWtntqlZbBodrW2IFuzlzSOkCki90RCd6EBkwZGl3ZeTSIcHPUiu50YD8tgD98);
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 9999;
+    animation: grain 8s steps(10) infinite
+    }
+@keyframes grain {
+    0%, 100% {
+        transform: translate(0, 0);
+        } 10% {
+        transform: translate(-5%, -10%);
+        } 30% {
+        transform: translate(3%, -15%);
+        } 50% {
+        transform: translate(12%, 9%);
+        } 70% {
+        transform: translate(-9%, 4%);
+        } 90% {
+        transform: translate(2%, -7%);
+        }
+    }
+/* Custom Cursor */
+#cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: #f0c05a;
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.1s ease-out
+    }
+#cursor-ring {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(240, 192, 90, 0.5);
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.25s ease-out
+    }
+/* Scroll Progress */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(to right, #f0c05a, #e11d48);
+    z-index: 10001;
+    width: 0%
+    }
+/* Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(10px);
+    transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1)
+    }
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0)
+    }
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    }
+.glass::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
+    transform: skewX(-25deg);
+    transition: 0.75s;
+    }
+.glass:hover::before {
+    left: 125%;
+    }
+.gradient-text {
+    background: linear-gradient(45deg, #f0c05a, #e5a1a1, #d97706);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 5s linear infinite
+    }
+@keyframes gradientFlow {
+    to {
+        background-position: 200% center;
+        }
+    }
+#flash-overlay {
+    position: fixed;
+    inset: 0;
+    background: white;
+    z-index: 20000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease-out;
+    }
+body {
+    text-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+.typewriter-active {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #f0c05a;
+    animation: typewriter 1.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #f0c05a }
+}
+@keyframes shake {
+    0%, 100% { transform: translate(0, 0); }
+    10%, 30%, 50%, 70%, 90% { transform: translate(-5px, -5px); }
+    20%, 40%, 60%, 80% { transform: translate(5px, 5px); }
+}
+.shake-screen {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+.gold-flash-text {
+    color: #fff !important;
+    text-shadow: 0 0 20px #f0c05a, 0 0 30px #f0c05a !important;
+    transition: all 0.5s ease;
+}</style>
+<style data-purpose="section-specific">/* Parallax Starfield */
+    .star-layer {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(#ffffff, rgba(255,255,255,0.2) 2px, transparent 40px);
+      background-size: 100px 100px;
+      pointer-events: none;
+    }
+
+    /* Polaroid Styles */
+    .polaroid {
+      width: 280px;
+      height: 350px;
+      background: #fff;
+      padding: 15px 15px 50px 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transform: rotate(calc(var(--r, 0deg))) scale(0.9);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      opacity: 0.3;
+      visibility: visible;
+      pointer-events: none;
+      filter: grayscale(0.5) blur(2px);
+    }
+    
+    .polaroid.active-card {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) rotate(calc(var(--r, 0deg))) scale(1.1);
+      z-index: 10;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      filter: grayscale(0) blur(0);
+    }
+
+    .polaroid::before, .polaroid::after {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 100px;
+      background-image: radial-gradient(circle, #000 1px, transparent 1px);
+      background-size: 10px 20px;
+      opacity: 0.05;
+    }
+    .polaroid::before { left: 0; }
+    .polaroid::after { right: 0; }
+
+    .polaroid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(0.1) contrast(1.05);
+    }
+
+    #film-strip-container {
+      position: relative;
+      height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(240, 192, 90, 0.3);
+      color: #f0c05a;
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      background: rgba(240, 192, 90, 0.1); border-color: #f0c05a;
+      box-shadow: 0 0 15px rgba(240, 192, 90, 0.2);
+    }
+
+    #intro-curtain {
+      position: fixed; inset: 0; z-index: 99999; pointer-events: none;
+    }
+    .curtain {
+      position: absolute; top: 0; height: 100%; width: 50%; background: #0a0a0a; transition: transform 1.8s cubic-bezier(0.7, 0, 0.3, 1); z-index: 100000; border-color: #f0c05a;
+    }
+    .curtain-left { left: 0; border-right: 2px solid #f0c05a; transform: translateX(0); }
+    .curtain-right { right: 0; border-left: 2px solid #f0c05a; transform: translateX(0); }
+    .curtain-open .curtain-left { transform: translateX(-100%); }
+    .curtain-open .curtain-right { transform: translateX(100%); }
+
+    #countdown {
+      text-shadow: 0 0 30px rgba(240, 192, 90, 0.3); transition: opacity 0.8s ease, transform 0.8s ease; z-index: 100001;
+    }
+
+    .cake-stroke {
+      stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: draw 3s forwards;
+    }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    .flame {
+      animation: flicker 0.1s infinite alternate; transform-origin: bottom;
+    }
+    @keyframes flicker {
+      0% { transform: scale(1) skewX(2deg); opacity: 0.8; } 100% { transform: scale(1.1) skewX(-2deg); opacity: 1; }
+    }
+.polaroid.active-card {
+    box-shadow: 0 0 60px rgba(240, 192, 90, 0.2), 0 20px 50px rgba(0,0,0,0.5);
+    filter: grayscale(0) blur(0) brightness(1.05);
+}
+.polaroid:not(.active-card) {
+    filter: grayscale(0.8) blur(3px) brightness(0.6);
+}
+    /* Achievement Shine Effect */
+    .badge-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .badge-card::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+      transform: rotate(45deg);
+      transition: 0.5s;
+      pointer-events: none;
+    }
+    .badge-card:hover::after {
+      left: 100%; top: 100%;
+    }
+    .rarity-tag {
+      font-size: 0.65rem;
+      padding: 2px 8px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    /* Vintage Journal Styles */
+    .journal-card {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(240, 192, 90, 0.1);
+      box-shadow: inset 0 0 50px rgba(0,0,0,0.02), 0 10px 30px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    .journal-card::before {
+      content: '';
+      position: absolute;
+      left: 40px; top: 0; bottom: 0;
+      width: 1px;
+      background: rgba(240, 192, 90, 0.1);
+    }</style>
+<!-- END: Global Styles -->
+<style>.hero-name-glow { text-shadow: 0 0 20px rgba(255, 191, 0, 0.3); transition: text-shadow 0.5s ease; }.hero-name-glow:hover { text-shadow: 0 0 40px rgba(255, 191, 0, 0.6), 0 0 80px rgba(225, 29, 72, 0.3); }.floating-wish { position: absolute; font-family: 'Cormorant Garamond', serif; font-style: italic; color: rgba(255, 191, 0, 0.4); font-size: 1.25rem; white-space: nowrap; animation: floatDrift 15s linear infinite; pointer-events: none; }@keyframes floatDrift { 0% { transform: translate(0, 0) rotate(0deg); opacity: 0; } 10% { opacity: 0.6; } 90% { opacity: 0.6; } 100% { transform: translate(100px, -150px) rotate(10deg); opacity: 0; } }.gold-dust { position: fixed; width: 4px; height: 4px; background: #ffbf00; border-radius: 50%; pointer-events: none; z-index: 9998; animation: dustFade 1s forwards; }@keyframes dustFade { to { transform: scale(0); opacity: 0; } }.polaroid-wrap { perspective: 1000px; }.polaroid { transition: transform 0.1s ease-out, opacity 0.8s ease, filter 0.8s ease !important; }.reveal { transform: translateY(40px) scale(0.95); transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1) !important; }.reveal.active { transform: translateY(0) scale(1); }.active-theme { color: #ffbf00 !important; border-color: rgba(255,191,0,0.5) !important; background: rgba(255,191,0,0.1); }</style><style>
+  #roast-content.expanded { max-height: 500px; opacity: 1; }
+  .lantern {
+    position: absolute;
+    width: 30px;
+    height: 45px;
+    background: rgba(255, 191, 0, 0.6);
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(255, 191, 0, 0.4);
+    cursor: pointer;
+    pointer-events: auto;
+    animation: floatLantern var(--duration) ease-in-out infinite;
+  }
+  .lantern::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; left: 50%; transform: translateX(-50%);
+    width: 2px; height: 10px; background: rgba(255, 191, 0, 0.3);
+  }
+  @keyframes floatLantern {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+  }
+  .wish-float {
+    position: absolute;
+    color: #ffbf00;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    pointer-events: none;
+    animation: wishRise 3s forwards;
+  }
+  @keyframes wishRise {
+    0% { transform: translateY(0); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-100px); opacity: 0; }
+  }
+</style><link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&amp;display=swap" rel="stylesheet"/><style>
+  @media (max-width: 768px) {
+    .hero-name-glow {
+      font-size: clamp(2.5rem, 12vw, 4rem) !important;
+      line-height: 1.2;
+      margin-bottom: 1.5rem !important;
+      word-wrap: break-word;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style></head>
+<body class="film-grain"><div id="flash-overlay"></div>
+<!-- BEGIN: UI Overlay Elements -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+<button class="fixed bottom-6 right-6 z-[100] p-3 rounded-full glass border-amber text-amber hover:scale-110 transition-transform" id="audio-toggle">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- END: UI Overlay Elements -->
+<!-- BEGIN: Curtain Intro -->
+<div id="intro-curtain">
+<div class="curtain curtain-left"></div>
+<div class="curtain curtain-right"></div>
+<div class="fixed inset-0 flex items-center justify-center pointer-events-none z-[100001]" id="countdown-wrapper">
+<div class="text-amber text-8xl md:text-[12rem] font-serif italic" id="countdown" style="text-shadow: 0 0 30px rgba(240, 192, 90, 0.3); transition: opacity 0.4s ease, transform 0.4s ease; z-index: 100001; color: #f0c05a;">3</div>
+</div>
+</div>
+<!-- END: Curtain Intro -->
+<!-- BEGIN: Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden" id="hero">
+<div class="star-layer" style="opacity: 0.3; transform: scale(1);"></div>
+<div class="star-layer" style="opacity: 0.5; transform: scale(1.5); filter: blur(1px);"></div>
+<div class="star-layer" style="opacity: 0.2; transform: scale(2); filter: blur(2px);"></div>
+<div class="text-center z-10 px-4">
+<h1 class="font-serif italic text-3xl md:text-5xl text-rose mb-4 opacity-0 animate-[fadeIn_2s_ease-out_forwards_2s]">Let's Celebrate...</h1>
+<h2 class="font-serif text-6xl md:text-9xl gradient-text font-bold mb-8 hero-name-glow">Happy Birthday Aniket</h2>
+<div class="glass p-6 rounded-2xl mb-8 mx-2 border-amber/30 shadow-[0_0_30px_rgba(255,191,0,0.15)] reveal active max-w-3xl mx-auto">
+<p class="font-serif italic text-lg leading-relaxed text-white/90">"To the guy who loves roasting his friends (including me), the occasional troublemaker — but don't forget, I can roast you even harder. The guy who acts like the smartest in the room... until I start exposing his stories. And the friend who brings both trouble and laughter wherever he goes. Happy Birthday, buddy! 🚀😅"</p>
+</div><p class="font-sans tracking-[0.5em] text-amber uppercase text-sm md:text-base opacity-0 animate-[fadeIn_2s_ease-out_forwards_4s]">A Legendary Journey of You</p>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+<svg class="w-6 h-6 text-amber" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 14l-7 7-7-7m14-8l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="absolute inset-0 pointer-events-none overflow-hidden"><span class="floating-wish" style="top: 20%; left: 15%; animation-delay: 0s;">Keep Shining</span><span class="floating-wish" style="top: 60%; left: 80%; animation-delay: -2s;">Legendary Year Ahead</span><span class="floating-wish" style="top: 35%; left: 70%; animation-delay: -5s;">Adventure Awaits</span><span class="floating-wish" style="top: 80%; left: 20%; animation-delay: -7s;">Unstoppable</span></div></section>
+<!-- END: Hero Section -->
+<!-- BEGIN: Story Timeline -->
+<section class="py-32 px-6 max-w-6xl mx-auto">
+<div class="grid md:grid-cols-2 gap-24 relative">
+<div class="reveal">
+<span class="text-9xl font-serif text-white/5 absolute -top-12 -left-8">I</span>
+<h3 class="font-serif text-4xl text-amber mb-4 mt-12 gradient-text">The Prologue</h3><p class="font-sans text-amber/80 text-sm italic mb-4">It all began on April 4th</p>
+<p class="font-sans text-lg text-white/70 leading-relaxed">The day the universe decided it needed a professional troublemaker. You arrived, and honestly, the neighborhood has never been quiet since. A flicker of light? More like a fire alarm.</p>
+</div>
+<div class="reveal" style="transition-delay: 200ms;">
+<span class="text-9xl font-serif text-white/5 absolute -top-12 -left-8">II</span>
+<h3 class="font-serif text-4xl text-rose mb-4 mt-12 gradient-text">The Turning Point</h3>
+<p class="font-sans text-lg text-white/70 leading-relaxed">That legendary phase where you traded logic for questionable haircuts and even more questionable decisions. Each milestone was basically a lesson in what NOT to do.</p>
+</div>
+<div class="reveal" style="transition-delay: 400ms;">
+<span class="text-9xl font-serif text-white/5 absolute -top-12 -left-8">III</span>
+<h3 class="font-serif text-4xl text-gold mb-4 mt-12 gradient-text">The Golden Era</h3>
+<p class="font-sans text-lg text-white/70 leading-relaxed">The present moment—where you’re a ‘legend’ in your own mind and still haven’t figured out how to tell a joke that actually lands. Wisdom is coming, but for now, we’ll settle for your ‘creative’ puns.</p>
+</div>
+<div class="reveal" style="transition-delay: 600ms;">
+<span class="text-9xl font-serif text-white/5 absolute -top-12 -left-8">IV</span>
+<h3 class="font-serif text-4xl text-amber mb-4 mt-12 gradient-text">The Infinite Sequel</h3>
+<p class="font-sans text-lg text-white/70 leading-relaxed">May the coming years be filled with fewer lost keys and more actual adulting. The world is waiting to see if you'll finally learn how to use a calendar. Cheers to more chaos!</p>
+</div>
+</div>
+</section>
+<!-- END: Story Timeline -->
+<!-- BEGIN: Data Stats -->
+<section class="py-24 bg-rose/5">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="reveal glass p-8 rounded-2xl text-center group hover:bg-amber/10 transition-colors break-words overflow-hidden">
+<h4 class="text-amber font-serif mb-2 counter" data-target="5162" style="font-size: clamp(1.75rem, 8vw, 3rem);">0</h4>
+<p class="font-sans text-xs tracking-widest uppercase text-white/40">Days of Brilliance</p>
+</div>
+<div class="reveal glass p-8 rounded-2xl text-center group hover:bg-rose/10 transition-colors break-words overflow-hidden" style="transition-delay: 100ms;">
+<h4 class="text-rose font-serif mb-2 counter" data-target="7433280" style="font-size: clamp(1.75rem, 8vw, 3rem);">0</h4>
+<p class="font-sans text-xs tracking-widest uppercase text-white/40">Golden Minutes</p>
+</div>
+<div class="reveal glass p-8 rounded-2xl text-center group hover:bg-gold/10 transition-colors break-words overflow-hidden" style="transition-delay: 200ms;">
+<h4 class="text-gold font-serif mb-2 counter" data-target="100" style="font-size: clamp(1.75rem, 8vw, 3rem);">0</h4>
+<p class="font-sans text-xs tracking-widest uppercase text-white/40">% Boundless Love</p>
+</div>
+<div class="reveal glass p-8 rounded-2xl text-center group hover:bg-amber/10 transition-colors break-words overflow-hidden" style="transition-delay: 300ms;">
+<h4 class="text-amber font-serif mb-2 text-4xl md:text-5xl">April 4, 2010</h4>
+<p class="font-sans text-xs tracking-widest uppercase text-neutral-500">A Legend Was Born</p>
+</div>
+</div>
+</section>
+<!-- END: Data Stats -->
+<!-- BEGIN: Memory Reel -->
+<section class="py-32 overflow-hidden">
+<h2 class="text-center font-serif text-5xl mb-16 reveal gradient-text">Epic Moments</h2>
+<div id="film-strip-container">
+<button class="nav-btn left-4 md:left-20" id="prev-card">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="relative w-full h-full flex items-center justify-center polaroid-wrap" id="film-strip">
+<!-- Polaroid 1 -->
+<div class="polaroid active-card" style="--r: -3deg;">
+<img alt="Aniket's Picture 1" src="https://i.ibb.co/VWd6Sq64/Whats-App-Image-2026-03-16-at-7-10-08-PM-Picsart-Ai-Image-Enhancer.jpg"/>
+<p class="mt-4 font-serif text-ink italic text-center">Happy Birthday Bhai</p>
+</div>
+<!-- Polaroid 2 -->
+<div class="polaroid" style="--r: 2deg;">
+<img alt="Aniket's Picture 2" src="https://i.ibb.co/TMkHRgSn/Whats-App-Image-2026-03-16-at-7-10-08-PM-1-Picsart-Ai-Image-Enhancer.jpg"/>
+<p class="mt-4 font-serif text-ink italic text-center">Stay happy, always</p>
+</div>
+<!-- Polaroid 3 -->
+<div class="polaroid" style="--r: -1deg;">
+<img alt="Aniket's Picture 3" src="https://i.ibb.co/6RfSc1cF/Whats-App-Image-2026-03-16-at-7-10-10-PM-Picsart-Ai-Image-Enhancer.jpg"/>
+<p class="mt-4 font-serif text-ink italic text-center">Good vibes only ✨</p>
+</div>
+<!-- Polaroid 4 -->
+<div class="polaroid" style="--r: 4deg;">
+<img alt="Aniket's Picture 4" src="https://i.ibb.co/23v2hCQx/Whats-App-Image-2026-03-16-at-7-10-09-PM-Picsart-Ai-Image-Enhancer.jpg"/>
+<p class="mt-4 font-serif text-ink italic text-center">Just breathe and keep going</p>
+</div>
+<!-- Polaroid 5 -->
+<div class="polaroid" style="--r: -4deg;">
+<img alt="Aniket's Picture 5" src="https://i.ibb.co/HLy4J4kb/Whats-App-Image-2026-03-16-at-7-10-09-PM-1-Picsart-Ai-Image-Enhancer.jpg"/>
+<p class="mt-4 font-serif text-ink italic text-center">Keep shining</p>
+</div>
+</div>
+<button class="nav-btn right-4 md:right-20" id="next-card">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</section>
+<section class="py-32 px-6" id="achievements">
+<div class="max-w-6xl mx-auto">
+<h2 class="text-center font-serif text-5xl mb-16 reveal gradient-text">Achievements Unlocked</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+<!-- Badge 1 -->
+<div class="reveal badge-card glass p-8 rounded-3xl text-center group hover:scale-105 transition-all duration-500" style="transition-delay: 100ms;">
+<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-amber/10 flex items-center justify-center text-amber">
+<span class="material-symbols-outlined text-4xl">emoji_events</span>
+</div>
+<span class="rarity-tag bg-amber/20 text-amber border border-amber/30">Legendary</span>
+<h4 class="font-serif text-xl text-white/90 mt-3">World-Class Friend</h4>
+<p class="text-xs text-white/50 mt-2 font-sans uppercase tracking-tighter">Always there for the chaos</p>
+</div>
+<!-- Badge 2 -->
+<div class="reveal badge-card glass p-8 rounded-3xl text-center group hover:scale-105 transition-all duration-500" style="transition-delay: 200ms;">
+<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-rose/10 flex items-center justify-center text-rose">
+<span class="material-symbols-outlined text-4xl">psychology</span>
+</div>
+<span class="rarity-tag bg-rose/20 text-rose border border-rose/30">Epic</span>
+<h4 class="font-serif text-xl text-white/90 mt-3">Professional Overthinker</h4>
+<p class="text-xs text-white/50 mt-2 font-sans uppercase tracking-tighter">PhD in hypothetical scenarios</p>
+</div>
+<!-- Badge 3 -->
+<div class="reveal badge-card glass p-8 rounded-3xl text-center group hover:scale-105 transition-all duration-500" style="transition-delay: 300ms;">
+<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center text-gold">
+<span class="material-symbols-outlined text-4xl">sentiment_very_satisfied</span>
+</div>
+<span class="rarity-tag bg-gold/20 text-gold border border-gold/30">Rare</span>
+<h4 class="font-serif text-xl text-white/90 mt-3">Master of Memes</h4>
+<p class="text-xs text-white/50 mt-2 font-sans uppercase tracking-tighter">Faster than a viral trend</p>
+</div>
+<!-- Badge 4 -->
+<div class="reveal badge-card glass p-8 rounded-3xl text-center group hover:scale-105 transition-all duration-500" style="transition-delay: 400ms;">
+<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-amber/10 flex items-center justify-center text-amber">
+<span class="material-symbols-outlined text-4xl">sports_esports</span>
+</div>
+<span class="rarity-tag bg-amber/20 text-amber border border-amber/30">Epic</span>
+<h4 class="font-serif text-xl text-white/90 mt-3">April 4, 2010</h4>
+<p class="text-xs text-white/50 mt-2 font-sans uppercase tracking-tighter">A Legend Was Born</p>
+</div>
+<!-- Badge 5 -->
+<div class="reveal badge-card glass p-8 rounded-3xl text-center group hover:scale-105 transition-all duration-500" style="transition-delay: 500ms;">
+<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-rose/10 flex items-center justify-center text-rose">
+<span class="material-symbols-outlined text-4xl">auto_awesome</span>
+</div>
+<span class="rarity-tag bg-rose/20 text-rose border border-rose/30">Legendary</span>
+<h4 class="font-serif text-xl text-white/90 mt-3">Chaos Coordinator</h4>
+<p class="text-xs text-white/50 mt-2 font-sans uppercase tracking-tighter">Managing the madness</p>
+</div>
+<!-- Badge 6 -->
+<div class="reveal badge-card glass p-8 rounded-3xl text-center group hover:scale-105 transition-all duration-500" style="transition-delay: 600ms;">
+<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center text-gold">
+<span class="material-symbols-outlined text-4xl">nightlight</span>
+</div>
+<span class="rarity-tag bg-gold/20 text-gold border border-gold/30">Rare</span>
+<h4 class="font-serif text-xl text-white/90 mt-3">3 AM Philosopher</h4>
+<p class="text-xs text-white/50 mt-2 font-sans uppercase tracking-tighter">Searching for the meaning</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 px-6 overflow-hidden" id="guestbook">
+<div class="max-w-4xl mx-auto reveal">
+<h2 class="text-center font-serif text-5xl mb-16 gradient-text">A Special Message</h2>
+<div class="journal-card rounded-xl p-12 md:p-20" style="background: #fcf5e5; background-image: radial-gradient(circle at 50% 50%, rgba(210, 180, 140, 0.1) 0%, transparent 100%), linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px); background-size: 100% 100%, 20px 20px, 20px 20px; border: none; box-shadow: 0 10px 40px rgba(0,0,0,0.1), 0 2px 10px rgba(0,0,0,0.05), inset 0 0 100px rgba(139, 69, 19, 0.05); transform: rotate(-0.5deg); position: relative; clip-path: polygon(0% 2%, 5% 0%, 10% 3%, 15% 1%, 20% 4%, 25% 2%, 30% 5%, 35% 1%, 40% 4%, 45% 2%, 50% 5%, 55% 1%, 60% 3%, 65% 0%, 70% 4%, 75% 2%, 80% 5%, 85% 1%, 90% 4%, 95% 0%, 100% 3%, 98% 10%, 100% 20%, 97% 30%, 100% 40%, 98% 50%, 100% 60%, 97% 70%, 100% 80%, 99% 90%, 100% 100%, 95% 98%, 90% 100%, 85% 97%, 80% 100%, 75% 98%, 70% 100%, 65% 97%, 60% 100%, 55% 98%, 50% 100%, 45% 97%, 40% 100%, 35% 98%, 30% 100%, 25% 97%, 20% 100%, 15% 98%, 10% 100%, 5% 97%, 0% 100%, 2% 90%, 0% 80%, 3% 70%, 0% 60%, 2% 50%, 0% 40%, 3% 30%, 0% 20%, 2% 10%);">
+<div class="relative min-h-[300px] flex flex-col justify-center items-center text-center">
+<div id="message-container"><div class="max-w-3xl mx-auto text-left space-y-6">
+<p class="font-serif italic text-2xl md:text-3xl text-gold/90 leading-relaxed" style="font-family: 'Architects Daughter', cursive; font-style: normal;">
+    Happy Birthday, Milkywhite (Aniket)! 🎉
+  </p>
+<p class="font-serif text-lg md:text-xl text-neutral-700 leading-relaxed" style="font-family: 'Architects Daughter', cursive;">
+    On your special day, I just want to tell you how much you mean to me and Raj. May God always keep you smiling, protect you from every trouble, and bless your life with endless happiness and success. May all your dreams come true, and may your future shine brighter than you can imagine.
+  </p>
+<p class="font-serif text-lg md:text-xl text-neutral-700 leading-relaxed" style="font-family: 'Architects Daughter', cursive;">
+    I and Raj miss you so much at school. Even though we sometimes talk online, it’s just not the same—the laughter, the little jokes, the fun moments we shared together… nothing online can replace that. After 10th, when you left, it felt like you left a big empty space in our world. Now in 11th, new students have joined, and most of them are my friends, but honestly, there’s nobody like you. There never will be. You’re one of a kind, Milkywhite… I mean, Aniket. 😉
+  </p>
+<p class="font-serif text-lg md:text-xl text-neutral-700 leading-relaxed" style="font-family: 'Architects Daughter', cursive;">
+    The memories we created together in school—every laugh, every small adventure, every silly moment—are treasures I’ll always carry in my heart. You made our days brighter, our challenges lighter, and our school life unforgettable.
+  </p>
+<p class="font-serif italic text-xl md:text-2xl text-gold/90 mt-8" style="font-family: 'Architects Daughter', cursive; font-style: normal;">
+    So today, I just want to celebrate you, the amazing friend who made everything more fun, more special, and more memorable. Happy Birthday, Milkywhite (Aniket)! May this year be full of laughter, love, and everything your heart desires.
+  </p>
+<p class="font-sans tracking-[0.3em] text-amber uppercase text-sm mt-12 text-center pt-8 border-t border-amber/10" style="font-family: 'Architects Daughter', cursive;">
+    With lots of love and missing you always, Me &amp; Raj 💛
+  </p>
+</div></div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 flex flex-col items-center justify-center bg-gradient-to-b from-transparent to-rose/5">
+<button class="group relative px-8 py-4 glass border-rose/30 text-rose font-serif italic text-xl tracking-widest rounded-full hover:border-rose transition-all duration-500 shadow-[0_0_20px_rgba(225,29,72,0.1)]" id="roast-archive-trigger">
+<span class="relative z-10 flex items-center gap-3">
+<span class="material-symbols-outlined">lock</span>
+      TOP SECRET: THE ROAST ARCHIVE
+    </span>
+<div class="absolute inset-0 bg-rose/10 opacity-0 group-hover:opacity-100 rounded-full transition-opacity"></div>
+</button>
+<div class="max-h-0 overflow-hidden transition-all duration-1000 ease-in-out w-full max-w-4xl" id="roast-content">
+<div class="grid md:grid-cols-3 gap-6 p-12">
+<div class="glass p-6 rounded-2xl border-amber/20 text-center">
+<span class="material-symbols-outlined text-amber mb-2">psychology</span>
+<p class="font-sans text-sm text-neutral-600">Professional overthinker who needs a manual to order coffee.</p>
+</div>
+<div class="glass p-6 rounded-2xl border-rose/20 text-center">
+<span class="material-symbols-outlined text-rose mb-2">visibility_off</span>
+<p class="font-sans text-sm text-neutral-600">professional at finding the most obscure memes at 3 AM</p>
+</div>
+<div class="glass p-6 rounded-2xl border-gold/20 text-center">
+<span class="material-symbols-outlined text-gold mb-2">timer</span>
+<p class="font-sans text-sm text-neutral-600">Can spend 3 hours deciding what to watch, then falls asleep in 5 mins.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Memory Reel -->
+<!-- BEGIN: Poem -->
+<section class="py-40 flex items-center justify-center bg-[#050505]">
+<div class="max-w-3xl text-center px-6 reveal">
+<div class="relative inline-block">
+<span class="absolute -top-12 -left-12 text-rose text-9xl opacity-20 font-serif">“</span>
+<p class="font-serif italic text-3xl md:text-5xl text-gold leading-relaxed">
+          Another year of crushing it,<br/>
+          another year of being legend.<br/>
+          The world is yours for the taking,<br/>
+          today we celebrate the man of the hour!
+        </p>
+<span class="absolute -bottom-24 -right-12 text-rose text-9xl opacity-20 font-serif">”</span>
+</div>
+<p class="mt-16 font-sans tracking-widest text-amber uppercase text-sm">— Celebrating Your Epic Journey</p>
+</div>
+</section>
+<!-- END: Poem -->
+<!-- BEGIN: Animated Cake -->
+<section class="py-32 flex flex-col items-center justify-center bg-[#050505] relative"><div class="absolute inset-0 overflow-hidden pointer-events-none" id="lantern-field"></div>
+<h2 class="font-serif text-4xl text-amber mb-12 reveal gradient-text">Make a Wish</h2>
+<div class="reveal" data-purpose="cake-container">
+<svg fill="none" height="300" viewbox="0 0 200 250" width="240" xmlns="http://www.w3.org/2000/svg">
+<!-- Tiers -->
+<rect class="cake-stroke" fill="#2d1414" height="60" rx="10" style="stroke: #e11d48; stroke-width: 2;" width="160" x="20" y="160"></rect>
+<rect class="cake-stroke" fill="#5c3d2e" height="50" rx="8" style="stroke: #d4af37; stroke-width: 2;" width="120" x="40" y="110"></rect>
+<rect class="cake-stroke" fill="#3d2b1f" height="40" rx="6" style="stroke: #ffbf00; stroke-width: 2;" width="80" x="60" y="70"></rect>
+<!-- Candles -->
+<line class="reveal" stroke="#ffbf00" stroke-linecap="round" stroke-width="4" style="transition-delay: 800ms;" x1="100" x2="100" y1="40" y2="70"></line>
+<path class="flame reveal" d="M100 20C100 20 95 30 100 40C105 30 100 20 100 20Z" fill="#e11d48" style="transition-delay: 1000ms;"></path>
+<!-- Decorations -->
+<circle class="reveal" cx="50" cy="180" fill="#ffbf00" r="3" style="transition-delay: 1.2s;"></circle>
+<circle class="reveal" cx="150" cy="180" fill="#ffbf00" r="3" style="transition-delay: 1.3s;"></circle>
+<circle class="reveal" cx="70" cy="130" fill="#e11d48" r="2" style="transition-delay: 1.4s;"></circle>
+<circle class="reveal" cx="130" cy="130" fill="#e11d48" r="2" style="transition-delay: 1.5s;"></circle>
+</svg>
+</div>
+</section>
+<!-- END: Animated Cake -->
+<!-- BEGIN: Finale Section -->
+<section class="py-40 flex items-center justify-center relative">
+<div class="reveal max-w-lg w-full p-1 bg-gradient-to-tr from-amber via-rose to-gold rounded-3xl group">
+<div class="bg-ink p-12 rounded-[22px] text-center">
+<h2 class="font-serif text-5xl text-white mb-6 gradient-text">The Best is Yet to Come</h2>
+<p class="font-sans text-gray-400 mb-10">May your year be as legendary as the energy you bring to everyone around you.</p>
+<button class="px-8 py-4 bg-amber text-ink font-bold font-sans uppercase tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,191,0,0.4)]" id="celebrate-btn">KEEP THE PARTY GOING! 🚀</button>
+</div>
+</div>
+</section>
+<!-- END: Finale Section -->
+<!-- BEGIN: Scripts -->
+<script data-purpose="canvas-fireworks">
+    // Canvas setup for global firework/sparkle clicks
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.style.position = 'fixed';
+    canvas.style.inset = '0';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '10002';
+    document.body.appendChild(canvas);
+
+    let particles = [];
+    
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+      constructor(x, y, color, speed, emoji = null) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.emoji = emoji;
+        this.angle = Math.random() * Math.PI * 2;
+        this.velocity = Math.random() * speed + 2;
+        this.friction = 0.95;
+        this.gravity = 0.15;
+        this.opacity = 1;
+        this.life = 100;
+      }
+      update() {
+        this.velocity *= this.friction;
+        this.x += Math.cos(this.angle) * this.velocity;
+        this.y += Math.sin(this.angle) * this.velocity + this.gravity;
+        this.opacity -= 0.01;
+        this.life--;
+      }
+      draw() {
+        if (this.emoji) {
+          ctx.font = '20px Arial';
+          ctx.globalAlpha = this.opacity;
+          ctx.fillText(this.emoji, this.x, this.y);
+        } else {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.globalAlpha = this.opacity;
+          ctx.fill();
+        }
+      }
+    }
+
+    function createBurst(x, y, count, isFinale = false) {
+      const colors = ['#ffbf00', '#e11d48', '#d4af37', '#ffffff'];
+      const emojis = ['✨', '🎈', '🎊', '🍰', '⭐'];
+      for (let i = 0; i < count; i++) {
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const emoji = isFinale && Math.random() > 0.8 ? emojis[Math.floor(Math.random() * emojis.length)] : null;
+        particles.push(new Particle(x, y, color, isFinale ? 15 : 5, emoji));
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles = particles.filter(p => p.life > 0);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // Auto-fireworks
+    setInterval(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * (canvas.height * 0.4);
+      createBurst(x, y, 20);
+    }, 5000);
+
+    // Click trigger
+    window.addEventListener('mousedown', (e) => {
+      createBurst(e.clientX, e.clientY, 15);
+    });
+  </script>
+<script data-purpose="interactions">    // Custom Cursor
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    window.addEventListener('mousemove', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      dot.style.transform = `translate(${x - 4}px, ${y - 4}px)`;
+      ring.style.transform = `translate(${x - 20}px, ${y - 20}px)`;
+
+      // Starfield Repulsion
+      const stars = document.querySelectorAll('.star-layer');
+      stars.forEach((star, i) => {
+        const rect = star.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const distX = x - centerX;
+        const distY = y - centerY;
+        const mag = Math.sqrt(distX*distX + distY*distY);
+        const repulsion = 20 / (mag / 100 + 1);
+        star.style.marginLeft = `${-distX * (i+1) * 0.01}px`;
+        star.style.marginTop = `${-distY * (i+1) * 0.01}px`;
+      });
+    });
+
+    // Intersection Observer for Reveal and Typewriter
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          
+          // Typewriter for chapter headings
+          const heading = entry.target.querySelector('h3');
+          if (heading) {
+            heading.classList.add('typewriter-active');
+          }
+
+          if (entry.target.querySelector('.counter')) {
+            const delay = parseInt(entry.target.style.transitionDelay) || 0;
+            setTimeout(() => startCounter(entry.target.querySelector('.counter')), delay);
+          }
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Counters with Gold Flash
+    function startCounter(el) {
+      const target = +el.getAttribute('data-target');
+      let current = 0;
+      const duration = 2000;
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        current = Math.floor(progress * target);
+        el.innerText = current.toLocaleString();
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.innerText = target.toLocaleString();
+          el.classList.add('gold-flash-text');
+          setTimeout(() => el.classList.remove('gold-flash-text'), 1000);
+        }
+      }
+      requestAnimationFrame(update);
+    }
+
+    // Finale Button with Screen Shake and Flash
+    document.getElementById('celebrate-btn').addEventListener('click', (e) => {
+      const flash = document.getElementById('flash-overlay');
+      document.body.classList.add('shake-screen');
+      flash.style.opacity = '1';
+      
+      setTimeout(() => {
+        flash.style.opacity = '0';
+        document.body.classList.remove('shake-screen');
+        for(let i=0; i<20; i++) {
+          setTimeout(() => {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            createBurst(x, y, 50, true);
+          }, i * 100);
+        }
+      }, 300);
+    });
+  
+    // Carousel logic stays the same
+    const cards = document.querySelectorAll('.polaroid');
+    let currentCardIndex = 0;
+    function updateCarousel() {
+      cards.forEach((card, index) => {
+        card.classList.remove('active-card');
+        if (index === currentCardIndex) card.classList.add('active-card');
+      });
+    }
+    document.getElementById('prev-card').addEventListener('click', () => {
+      currentCardIndex = (currentCardIndex - 1 + cards.length) % cards.length;
+      updateCarousel();
+    });
+    document.getElementById('next-card').addEventListener('click', () => {
+      currentCardIndex = (currentCardIndex + 1) % cards.length;
+      updateCarousel();
+    });</script>
+<script data-purpose="audio-engine">
+    let audioCtx = null;
+    let isPlaying = false;
+    let currentVibe = 'orchestral';
+
+    const vibes = {
+      orchestral: [
+        { f: 261.63, d: 0.4 }, { f: 261.63, d: 0.2 }, { f: 293.66, d: 0.6 }, { f: 261.63, d: 0.6 }, { f: 349.23, d: 0.6 }, { f: 329.63, d: 1.2 },
+        { f: 261.63, d: 0.4 }, { f: 261.63, d: 0.2 }, { f: 293.66, d: 0.6 }, { f: 261.63, d: 0.6 }, { f: 392.00, d: 0.6 }, { f: 349.23, d: 1.2 }
+      ],
+      lofi: [
+        { f: 196.00, d: 0.8 }, { f: 220.00, d: 0.8 }, { f: 246.94, d: 0.8 }, { f: 261.63, d: 1.6 },
+        { f: 174.61, d: 0.8 }, { f: 196.00, d: 0.8 }, { f: 220.00, d: 0.8 }, { f: 196.00, d: 1.6 }
+      ],
+      party: [
+        { f: 261.63, d: 0.2 }, { f: 261.63, d: 0.2 }, { f: 329.63, d: 0.2 }, { f: 392.00, d: 0.2 },
+        { f: 349.23, d: 0.2 }, { f: 349.23, d: 0.2 }, { f: 440.00, d: 0.2 }, { f: 523.25, d: 0.2 }
+      ]
+    };
+
+    function playNote(freq, duration, startTime) {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = currentVibe === 'lofi' ? 'triangle' : currentVibe === 'party' ? 'square' : 'sine';
+      osc.frequency.setValueAtTime(freq, startTime);
+      gain.gain.setValueAtTime(0.05, startTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(startTime);
+      osc.stop(startTime + duration);
+    }
+
+    let melodyTimeout;
+    function playMelody() {
+      if (!isPlaying) return;
+      let time = audioCtx.currentTime + 0.1;
+      const notes = vibes[currentVibe];
+      notes.forEach(note => {
+        playNote(note.f, note.d, time);
+        time += note.d;
+      });
+      clearTimeout(melodyTimeout);
+      melodyTimeout = setTimeout(playMelody, (time - audioCtx.currentTime) * 1000 + 100);
+    }
+
+    const initAudio = () => {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        isPlaying = true;
+        playMelody();
+      }
+    };
+
+    document.addEventListener('click', initAudio, { once: true });
+
+    document.getElementById('audio-toggle').addEventListener('click', (e) => {
+      e.stopPropagation();
+      initAudio();
+      isPlaying = !isPlaying;
+      if (isPlaying) playMelody();
+      else clearTimeout(melodyTimeout);
+      e.currentTarget.style.opacity = isPlaying ? '1' : '0.5';
+    });
+
+    const vibeToggle = document.getElementById('vibe-toggle-btn');
+    const optionsShelf = document.getElementById('music-options-shelf');
+    
+    vibeToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      optionsShelf.classList.toggle('opacity-0');
+      optionsShelf.classList.toggle('translate-x-10');
+      optionsShelf.classList.toggle('pointer-events-none');
+    });
+
+    document.querySelectorAll('[data-vibe]').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        document.querySelectorAll('[data-vibe]').forEach(b => {
+          b.classList.remove('active-theme', 'text-amber', 'border-amber/20');
+          b.classList.add('text-gray-400', 'border-transparent');
+        });
+        this.classList.add('active-theme', 'text-amber', 'border-amber/20');
+        this.classList.remove('text-gray-400', 'border-transparent');
+        
+        currentVibe = this.getAttribute('data-vibe');
+        if (isPlaying) {
+           clearTimeout(melodyTimeout);
+           playMelody();
+        }
+      });
+    });
+  </script>
+<!-- END: Scripts -->
+<script>document.addEventListener('DOMContentLoaded', () => {
+      const countdownEl = document.getElementById('countdown');
+      const introCurtain = document.getElementById('intro-curtain');
+      const countdownWrapper = document.getElementById('countdown-wrapper');
+      let count = 3;
+
+      const timer = setInterval(() => {
+        count--;
+        if (count > 0) {
+          countdownEl.style.opacity = '0';
+          setTimeout(() => {
+            countdownEl.textContent = count;
+            countdownEl.style.opacity = '1';
+            countdownEl.style.transform = 'scale(1.2)';
+            setTimeout(() => countdownEl.style.transform = 'scale(1)', 100);
+          }, 400);
+        } else if (count === 0) {
+          countdownEl.style.opacity = '0';
+          setTimeout(() => {
+            countdownEl.textContent = 'GO!';
+            countdownEl.style.opacity = '1';
+            countdownEl.classList.add('gradient-text');
+            clearInterval(timer);
+            
+            setTimeout(() => {
+              introCurtain.classList.add('curtain-open');
+              countdownWrapper.style.opacity = '0';
+              countdownWrapper.style.transition = 'opacity 0.5s ease';
+              
+              setTimeout(() => {
+                introCurtain.style.display = 'none';
+                countdownWrapper.style.display = 'none';
+              }, 1800);
+            }, 800);
+          }, 400);
+        }
+      }, 1200);
+    });</script><div class="fixed bottom-6 right-20 z-[100] flex items-center gap-3" id="vibe-menu-container">
+<div class="flex items-center gap-2 glass p-1.5 rounded-full border-amber/30 transition-all duration-500 opacity-0 translate-x-10 pointer-events-none bg-black/80" id="music-options-shelf">
+<button class="px-4 py-1.5 text-[10px] uppercase tracking-widest text-amber border border-amber/20 rounded-full hover:bg-amber/10 active-theme transition-all" data-vibe="orchestral">Epic Orchestral</button>
+<button class="px-4 py-1.5 text-[10px] uppercase tracking-widest text-gray-400 border border-transparent rounded-full hover:bg-white/5 transition-all" data-vibe="lofi">Chill Lo-fi</button>
+<button class="px-4 py-1.5 text-[10px] uppercase tracking-widest text-gray-400 border border-transparent rounded-full hover:bg-white/5 transition-all" data-vibe="party">Pop Party</button>
+</div>
+<button class="flex items-center gap-2 glass p-1.5 rounded-full border-amber/30 transition-all duration-500 opacity-0 translate-x-10 pointer-events-none bg-black/80" id="vibe-toggle-btn" title="Change Music Vibe">
+<span class="material-symbols-outlined text-xl">tune</span>
+</button>
+</div><script>
+  // Roast Archive Toggle
+  document.getElementById('roast-archive-trigger').addEventListener('click', function() {
+    const content = document.getElementById('roast-content');
+    const isExpanded = content.classList.toggle('expanded');
+    this.querySelector('.material-symbols-outlined').textContent = isExpanded ? 'lock_open' : 'lock';
+  });
+
+  // Lantern Generation and Logic
+  const lanternField = document.getElementById('lantern-field');
+  const wishes = ['Success!', 'Travel!', 'More Puns!', 'Endless Joy!', 'Big Dreams!', 'Health!'];
+  
+  function createLantern() {
+    const lantern = document.createElement('div');
+    lantern.className = 'lantern';
+    lantern.style.left = Math.random() * 90 + '%';
+    lantern.style.top = Math.random() * 70 + 10 + '%';
+    lantern.style.setProperty('--duration', (Math.random() * 3 + 4) + 's');
+    
+    lantern.addEventListener('click', (e) => {
+      lantern.style.boxShadow = '0 0 40px #ffbf00';
+      lantern.style.background = 'rgba(255, 191, 0, 0.9)';
+      
+      const wish = document.createElement('div');
+      wish.className = 'wish-float';
+      wish.textContent = wishes[Math.floor(Math.random() * wishes.length)];
+      wish.style.left = e.clientX + 'px';
+      wish.style.top = e.clientY + 'px';
+      document.body.appendChild(wish);
+      
+      setTimeout(() => {
+        wish.remove();
+        lantern.style.boxShadow = '0 0 20px rgba(255, 191, 0, 0.4)';
+        lantern.style.background = 'rgba(255, 191, 0, 0.6)';
+      }, 3000);
+    });
+    
+    lanternField.appendChild(lantern);
+  }
+
+  for(let i=0; i<8; i++) createLantern();
+</script></body></html>
